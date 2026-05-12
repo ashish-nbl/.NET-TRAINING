@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello From A.V.P</h1>
+    <label for="taskName"> Enter Task Name:</label>
+   <input type="text" id="taskName" placeholder="ex:task1">
+   <label for="task">Selet Task Priority</label>
+    <select name="task" id="task">
+        <option value="">Select</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select>
+    <button onclick="addValue()" id="add-task">Add Task</button>
+<br>
+   <label for="taskName">Search Task By Title:</label>
+   <input type="text" id="taskName" placeholder="ex:task1" oninput="titleChange(event.target.value)">
+
+
+    <!-- TASK LIST -->
+    <div class="taskContainer" id="taskContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>

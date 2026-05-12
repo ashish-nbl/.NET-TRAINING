@@ -178,7 +178,7 @@
 //    {
 //        Console.WriteLine("This is the method using override");
 //    }
-//    public new void Method2()
+//    public  new void Method2()
 //    {
 //        Console.WriteLine("This is the method2 using new key word");
 //    }
@@ -188,6 +188,7 @@
 //{
 //    public static void Main(string[] args)
 //    {
+
 //        Base b = new Base();
 //        b.Method();
 //        b.Method2();
@@ -207,7 +208,8 @@
 //}
 
 
-//Custom Exception
+////Custom Exception
+
 using static System.Console;
 
 class MyCustomException : Exception
