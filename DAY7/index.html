@@ -1,29 +1,153 @@
-<!DOCTYPE html>
+
+
+
+ 
+<!doctype html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 <body>
-    <h1>Hello From A.V.P</h1>
-    <label for="taskName"> Enter Task Name:</label>
-   <input type="text" id="taskName" placeholder="ex:task1">
-   <label for="task">Selet Task Priority</label>
-    <select name="task" id="task">
-        <option value="">Select</option>
-        <option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-    </select>
-    <button onclick="addValue()" id="add-task">Add Task</button>
-<br>
-   <label for="taskName">Search Task By Title:</label>
-   <input type="text" id="taskName" placeholder="ex:task1" oninput="titleChange(event.target.value)">
 
+    <h1 id="heading">Student Task Management System</h1>
 
-    <!-- TASK LIST -->
-    <div class="taskContainer" id="taskContainer"></div>
+    <div class="main-container">
+
+        <div class="form-section">
+
+            <div class="task-input">
+                <label for="taskName">Enter Task Name:</label>
+
+                <input
+                    type="text"
+                    id="taskName"
+                    placeholder="ex: task1"
+                    class="input-field"
+                />
+            </div>
+
+            <div class="task-input">
+                <label for="task">Select Task Priority</label>
+
+                <select name="task" id="task" class="select-field">
+                    <option value="">Select</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+
+            <div class="btn-container">
+                <button onclick="addValue()" class="add-btn">
+                    Add Task
+                </button>
+            </div>
+
+        </div>
+
+        <div class="search-section">
+
+            <div class="task-input">
+                <label for="searchTask">Search Task By Title:</label>
+
+                <input
+                    type="text"
+                    id="searchTask"
+                    class="input-field"
+                    placeholder="ex: task1"
+                    oninput="titleChange(event.target.value)"
+                />
+            </div>
+
+            <div class="task-input">
+                <label for="filter">Filter By:</label>
+
+                <select
+                    name="filter"
+                    id="filter"
+                    class="select-field"
+                    oninput="filterTasks(event.target.value)"
+                >
+                    <!-- <option value="">Select</option> -->
+                    <option value="all">All</option>
+                    <option value="completed">Completed</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="taskContainer" id="taskContainer"></div>
+
+    </div>
+
     <script src="script.js"></script>
+
 </body>
-</html>
+</html> 
+
+<!-- <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1 id="heading">Student Task Management System</h1>
+    <div class="main-container">
+      <div class="input-container">
+        <div class="task-input">
+          <label for="taskName"> Enter Task Name:</label>
+          <input
+            type="text"
+            id="taskName"
+            placeholder="ex:task1"
+            class="input-field"
+          />
+        </div>
+        <div class="task-input">
+          <label for="task">Selet Task Priority</label>
+          <select name="task" id="task" class="select-field">
+            <option value="">Select</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <button onclick="addValue()" class="add-btn">Add Task</button>
+      </div>
+      <br />
+      <div class="task-input">
+      <label for="taskName">Search Task By Title:</label>
+      <input
+        type="text"
+        id="taskName"
+        class="input-field"
+        placeholder="ex:task1"
+        oninput="titleChange(event.target.value)"
+      />
+
+      <label for="filter">Filter By:</label>
+      <select
+        name="filter"
+        id="filter"
+        class="select-field"
+        oninput="filterTasks(event.target.value)"
+      >
+        <option value="">Select</option>
+        <option value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+      </select>
+      </div>
+      <div class="taskContainer" id="taskContainer"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html> -->

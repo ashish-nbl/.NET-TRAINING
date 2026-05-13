@@ -21,12 +21,18 @@ console.log("Hello");
 //     }
 // ];
 
+
 let taskArray = JSON.parse(localStorage.getItem("tasksData")) || [];
 
 let btnEl = document.getElementById("add-task");
 
 function addValue() {
-  let taskName = document.getElementById("taskName").value;
+    let taskNameEl = document.getElementById("taskName");
+
+  let taskPriorityEl = document.getElementById("task");
+
+
+  let taskName = taskNameEl.value;
   if(taskName==='')
   {
     alert("Task Title is required");
@@ -34,7 +40,7 @@ function addValue() {
   }
   console.log("taskname:" + taskName);
 
-  let taskPriority = document.getElementById("task").value;
+  let taskPriority = taskPriorityEl.value;
   console.log("priority:" + taskPriority);
   if(taskPriority==='')
   {
@@ -55,15 +61,25 @@ function addValue() {
   console.log(taskArray);
 
   localStorage.setItem("tasksData", JSON.stringify(taskArray));
+  
+   taskNameEl.value = '';
+  taskPriorityEl.value = '';
   renderTask();
 }
 
 let taskContainer = document.getElementById("taskContainer");
+
+
 function renderTask(tasks = taskArray) {
   taskContainer.innerHTML = "";
   let taskList = tasks.forEach((task) => {
     let card = document.createElement("div");
     card.classList.add("task-card");
+
+    if(task.isCompleted)
+    {
+      card.id='completed-card'
+    }
 
     let name = document.createElement("p");
     name.classList.add("task-title");
@@ -93,19 +109,23 @@ function renderTask(tasks = taskArray) {
     deleteBtn.classList.add("delete-btn");
 
     deleteBtn.addEventListener("click", () => {
+      let wantToDelete=confirm("Are you sure to delete this task")
+      if(wantToDelete)
+      {
       let inx = taskArray.indexOf(task);
       if (inx !== -1) {
         taskArray.splice(inx, 1);
         localStorage.setItem("tasksData", JSON.stringify(taskArray));
         renderTask();
       }
+    }
       console.log(taskArray);
     });
 
-    card.appendChild(name);
-    card.appendChild(priority);
-    card.appendChild(createdDate);
-    card.appendChild(status);
+    card.append(name);
+    card.append(priority);
+    card.append(createdDate);
+    card.append(status);
     if (!task.isCompleted) {
       let btn = document.createElement("button");
       btn.textContent = "Complete Task";
@@ -118,35 +138,103 @@ function renderTask(tasks = taskArray) {
         renderTask();
         console.log(taskArray);
       });
-      card.appendChild(btn);
+      card.append(btn);
     }
-    card.appendChild(deleteBtn);
-    taskContainer.appendChild(card);
-
+    card.append(deleteBtn);
+    taskContainer.append(card);
+ 
     console.log(taskArray);
   });
 }
 
 renderTask();
 
+// function titleChange(taskName)
+// {
+//   console.log(taskName);
+//   let filteredArray=taskArray.filter(task=>task.name.toLowerCase().includes(taskName.toLowerCase()))
+ 
+//   console.log(filteredArray);
+
+//   let messageExists=document.getElementById('not-found')
+//   if(filteredArray.length===0)
+//   {
+//     if(!messageExists)
+//     {
+//         // let notFound=document.createElement('p');
+//         // notFound.id='not-found'
+//         // let body=document.body;
+//         // notFound.innerText="Task Not Found"
+//         // body.appendChild(notFound);
+
+        
+
+//     }
+//   }
+//   renderTask(filteredArray);
+// }
 function titleChange(taskName)
 {
-  console.log(taskName);
-  let filteredArray=taskArray.filter(task=>task.name.toLowerCase().includes(taskName.toLowerCase()))
- 
-  console.log(filteredArray);
+    console.log(taskName);
 
-  let messageExists=document.getElementById('not-found')
-  if(filteredArray.length===0)
-  {
-    if(!messageExists)
-    {
-        let notFound=document.createElement('p');
-        notFound.id='not-found'
-        let body=document.body;
-        notFound.innerText="Task Not Found"
-        body.appendChild(notFound);
+    let filteredArray = taskArray.filter(task =>
+      task.name.toLowerCase().includes(taskName.toLowerCase())
+    );
+    
+    renderTask(filteredArray);
+    console.log(filteredArray);
+
+    let messageExists = document.getElementById("not-found");
+
+    if(messageExists){
+        messageExists.remove();
     }
+
+    if(filteredArray.length === 0 && taskName.trim() !== "")
+    {
+            showNotFoundMessage();
+
+    }
+
+}
+
+function filterTasks(filterTask)
+{
+
+  console.log(filterTask);
+  if(filterTask==="all")
+  {
+    renderTask();
   }
-  renderTask(filteredArray);
+  else
+  {
+  let filteredTasks=taskArray.filter(task=>{
+    let filteredName=task.isCompleted ? "completed" :"pending"
+    return filteredName===filterTask;
+  });
+  console.log(filteredTasks);
+  renderTask(filteredTasks);
+  
+  if(filteredTasks.length===0)
+  {
+    showNotFoundMessage();
+  }
+}
+}
+
+
+function showNotFoundMessage(){
+
+    let existing = document.getElementById("not-found");
+
+    if(!existing){
+
+        let message = document.createElement("p");
+
+        message.id = "not-found";
+
+        message.innerText = "Task Not Found";
+
+        taskContainer.append(message);
+    }
 }
