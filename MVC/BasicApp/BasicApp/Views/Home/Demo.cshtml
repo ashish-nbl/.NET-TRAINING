@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<p>
+    This is the Demo page
+</p>
+<h2>Full Name:@ViewData["name"]</h2>
+ 
+<h2>Full Name:@ViewBag.fullName</h2>
+@{
+    foreach (var item in ViewBag.friends)
+    {
+        <p>@item</p>
+    }
+}
