@@ -72,7 +72,7 @@ let taskContainer = document.getElementById("taskContainer");
 
 function renderTask(tasks = taskArray) {
   taskContainer.innerHTML = "";
-  let taskList = tasks.forEach((task) => {
+   tasks.forEach((task) => {
     let card = document.createElement("div");
     card.classList.add("task-card");
 
