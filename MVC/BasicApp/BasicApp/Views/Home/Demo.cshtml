@@ -8,12 +8,24 @@
 <p>
     This is the Demo page
 </p>
-<h2>Full Name:@ViewData["name"]</h2>
+<h2>Full Name:@ViewData["name"] (using tempData)</h2> 
  
-<h2>Full Name:@ViewBag.fullName</h2>
-@{
-    foreach (var item in ViewBag.friends)
-    {
-        <p>@item</p>
-    }
+<h2>Full Name:@ViewBag.fullName (using tempBag)</h2>
+
+
+
+@foreach (var item in ViewBag.friends)
+{
+<p>@item</p>
 }
+
+<p>TempData: @TempData["tempData"]</p>
+
+@{
+    var value = TempData["tempData2"];
+    TempData.Keep("tempData2");
+    var value2 = TempData["tempData3"];
+}
+    <p>@value</p>
+
+    <p>@value2</p>

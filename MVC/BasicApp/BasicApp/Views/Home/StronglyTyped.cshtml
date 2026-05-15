@@ -1,0 +1,22 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@* @model Student
+
+<p>@Model.Id</p>
+<p>@Model.Name</p>
+<p>@Model.Gender</p>
+<p>@Model.Standard</p>
+<p>@Model.State</p> *@
+
+
+@model List<Student>
+
+@foreach (var student in Model)
+{
+    <p>@student.Id</p>
+    <p>@student.Name</p>
+    <p>@student.Gender</p>
+    <p>@student.Standard</p>
+    <p>@student.State</p>
+}

@@ -14,14 +14,13 @@
 @{
     var name = "Ashish";
     string[] names = { "Ashish", "Aman","Anisha","Sneha","Divya","Mayur"};
-
-    foreach (var item in names)
-    {
-        <p>@item</p>
-    }
-}
-@{
     var age = 34;
+
+   
+}
+@foreach (var item in names)
+{
+<p>@item</p>
 }
 <p>@name</p>
 
@@ -29,17 +28,15 @@
 <h2>Full Name:@ViewData["name"]</h2>
 <h2>Age:@ViewData["age"]</h2>
 <h2>Friends:</h2>
-@{
-    foreach (var item in (List<string>)ViewData["friends"])
+
+    @foreach (var item in (List<string>)ViewData["friends"])
     {
         <p>@item</p>
     }
-}
 <h2>Sports:</h2>
 
-@{
-      foreach (var item in (string[])ViewData["sports"])
+
+      @foreach (var item in (string[])ViewData["sports"])
     {
         <p>@item</p>
     }
-}
