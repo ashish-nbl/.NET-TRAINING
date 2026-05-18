@@ -14,6 +14,7 @@ namespace BasicApp.Controllers
         {
             _studentRepo = studentRepo;
         }
+        [Route("")]
         public IActionResult Index()
         {
             TempData["tempData"] = "this is tempdata";

@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model Student
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<a asp-controller="Home" asp-action="Privacy" asp-route-id="3" asp-route-userName="Ashish">privacy page</a>
+
+<form asp-action="Index" asp-controller="Home" method="post">
+    <input asp-for="Name" placeholder="Enter your name" />
+    <input asp-for="Age"  placeholder="Enter your age"/>
+    <input asp-for="Country" placeholder="Enter your country"/>
+    <input type="submit" value="submit"/> 
+</form>

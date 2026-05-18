@@ -1,15 +1,10 @@
-using BasicApp.Repository.Implementation;
-using BasicApp.Repository.Interfaces;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IStudent,StudentImplementation>();
-
 var app = builder.Build();
-
+app.UseStaticFiles();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -17,8 +12,6 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
-/*builder.Services.AddScoped<IStudent,StudentImplementation>();*/
 
 app.UseHttpsRedirection();
 app.UseRouting();
@@ -29,7 +22,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "TagHelpers/{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 
