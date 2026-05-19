@@ -1,19 +1,198 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 
 @model Student
-
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
 <a asp-controller="Home" asp-action="Privacy" asp-route-id="3" asp-route-userName="Ashish">privacy page</a>
-
-<form asp-action="Index" asp-controller="Home" method="post">
+@* 
+<div>
+<form asp-action="Privacy" asp-controller="Home" method="post">
     <input asp-for="Name" placeholder="Enter your name" />
-    <input asp-for="Age"  placeholder="Enter your age"/>
+    <span asp-validation-for="Name"></span>
+    <input asp-for="Email"  placeholder="Enter your email" />
+    <select asp-for="Gender" asp-items="Html.GetEnumSelectList<Gender>()">
+        <option value="">Select Gender</option>
+    </select>
+    <label>Age:</label>
+    <input asp-for="Age" type="range"  placeholder="Enter your age"/>
+    <label>Married:</label>
+    <label>Yes:</label> <input type="radio" asp-for="Married" value="Yes" />
+    <label>No:</label> <input type="radio" asp-for="Married" value="No" />
     <input asp-for="Country" placeholder="Enter your country"/>
     <input type="submit" value="submit"/> 
 </form>
+</div> *@
+<div class="container mt-5">
+
+    <div class="card shadow p-4">
+
+        <h2 class="text-center mb-4">User Form</h2>
+
+        <form asp-action="Privacy" asp-controller="Home" method="post">
+
+            <!-- Name -->
+            <div class="mb-3">
+                <label class="form-label">Name</label>
+
+                <input asp-for="Name"
+                       class="form-control"
+                       placeholder="Enter your name" />
+
+                <span asp-validation-for="Name"
+                      class="text-danger"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+
+                <input asp-for="Email"
+                       class="form-control"
+                       placeholder="Enter your email" />
+                <span asp-validation-for="Email"
+                      class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+
+                <input asp-for="Password"
+                       class="form-control"
+                       placeholder="Enter your password" />
+                <span asp-validation-for="Password"
+                      class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Confirm Password</label>
+
+                <input asp-for="ConfirmPassword"
+                       class="form-control"
+                       placeholder="Enter confim password" />
+                <span asp-validation-for="ConfirmPassword"
+                      class="text-danger"></span>
+            </div>
+
+            <!-- Gender -->
+            <div class="mb-3">
+                <label class="form-label">Gender</label>
+
+                <select asp-for="Gender"
+                        asp-items="Html.GetEnumSelectList<Gender>()"
+                        class="form-select">
+
+                    <option value="">Select Gender</option>
+
+                </select>
+                <span asp-validation-for="Gender"
+                      class="text-danger"></span>
+            </div>
+
+            <!-- Age -->
+            <div class="mb-3">
+
+                <label class="form-label">Age</label>
+
+                <input asp-for="Age"
+                       type="number"
+                       class="form-control"
+                       placeholder="Enter your age" />
+                <span asp-validation-for="Age"
+                      class="text-danger"></span>
+            </div>
+
+            <!-- Married -->
+            <div class="mb-3">
+
+                <label class="form-label d-block">Married</label>
+
+                <div class="form-check form-check-inline">
+
+                    <input type="radio"
+                           asp-for="Married"
+                           value="Yes"
+                           class="form-check-input" />
+
+                    <label class="form-check-label">Yes</label>
+                    <span asp-validation-for="Married"
+                          class="text-danger"></span>
+                </div>
+
+                <div class="form-check form-check-inline">
+
+                    <input type="radio"
+                           asp-for="Married"
+                           value="No"
+                           class="form-check-input" />
+
+                    <label class="form-check-label">No</label>
+
+                </div>
+
+            </div>
+            <div class="mb-3">
+
+              <label class="form-label">MobileNo:</label>
+
+                <input type="tel" asp-for="MobileNo" class="form-control"  />
+
+                <span asp-validation-for="MobileNo"
+                       class="text-danger"></span>
+
+            </div>
+
+            <!-- Country -->
+            <div class="mb-3">
+
+                <label class="form-label">Country</label>
+
+                <input asp-for="Country"
+                       class="form-control"
+                       placeholder="Enter your country" />
+                <span asp-validation-for="Country"
+                      class="text-danger"></span>
+
+            </div>
+            <div class="form-check mb-3">
+
+                <input asp-for="RememberMe"
+                       class="form-check-input" />
+
+                <label asp-for="RememberMe"
+                       class="form-check-label">
+                </label>
+              
+
+            </div>
+            <div class="mb-3">
+
+                <label class="form-label">SocialLinks</label>
+
+                <input asp-for="SocialMedia"
+                       class="form-control"
+                       placeholder="Enter your sociallink ex.github,linkedin" />
+                <span asp-validation-for="SocialMedia"
+                      class="text-danger"></span>
+
+            </div>
+            <!-- Submit -->
+            <div class="text-center">
+
+                <input type="submit"
+                       value="Submit"
+                       class="btn btn-primary px-4" />
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

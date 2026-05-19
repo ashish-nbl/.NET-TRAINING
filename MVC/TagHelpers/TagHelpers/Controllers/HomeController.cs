@@ -11,11 +11,17 @@ namespace TagHelpers.Controllers
             return View();
         }
 
-        public IActionResult Privacy(int id,string userName)
+        [HttpGet]
+        public IActionResult Privacy(int id, string userName )
         {
             ViewBag.id = id;
             ViewBag.username = userName;
             return View();
+        }
+        [HttpPost]
+        public IActionResult Privacy(Student student)
+        {
+            return View(student);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

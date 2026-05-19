@@ -11,3 +11,51 @@
 
 <img src="~/images/Screenshot 2026-05-18 153331.png"  asp-append-version="true" />
 
+@model Student
+@* 
+@if(Model!=null)
+{
+<p>Student Name:@Model.Name</p>
+<p>Student Email:@Model.Email</p>
+<p>Student Age:@Model.Age</p>
+<p>Student gender:@Model.Gender</p>
+<p>Student Country:@Model.Country</p>
+} *@
+
+@if (Model != null)
+{
+    <div class="card shadow mt-4 p-4">
+
+        <h3 class="text-primary mb-3">
+            Student Details
+        </h3>
+
+        <p>
+            <strong>Student Name:</strong> @Model.Name
+        </p>
+
+        <p>
+            <strong>Student Email:</strong> @Model.Email
+        </p>
+
+        <p>
+            <strong>Student Age:</strong> @Model.Age
+        </p>
+
+        <p>
+            <strong>Student Gender:</strong> @Model.Gender
+        </p>
+
+        <p>
+            <strong>Student Country:</strong> @Model.Country
+        </p>
+
+        <p>
+            <strong>MobileNo:</strong> @Model.MobileNo
+        </p>
+        <p>
+            <strong>SocialLinks:</strong> @Model.SocialMedia
+        </p>
+
+    </div>
+}
